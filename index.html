@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4361EE">
+<meta name="description" content="Sistem Informasi dan Manajemen Warga RT.06 RW.01 Bangsri">
+<link rel="manifest" href="./manifest.json?v=3">
+<link rel="icon" href="./favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=3">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>SIMBA RT.06 RW.01 Bangsri</title>
+<link rel="preconnect" href="https://script.google.com">
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_balance,account_balance_wallet,account_circle,add,add_circle,apps,arrow_downward,arrow_forward,arrow_upward,attach_file,badge,brightness_auto,calendar_month,call,campaign,casino,check,check_circle,chevron_left,chevron_right,child_care,close,cloud_off,cloud_sync,contacts,content_copy,contrast,dark_mode,delete,download,drag_indicator,edit,edit_note,emergency,error,event,event_busy,family_restroom,flag,forum,group,groups,history,home,inbox,info,install_mobile,key,keyboard_arrow_down,keyboard_arrow_up,light_mode,lightbulb,local_florist,lock,login,logout,manage_accounts,menu_book,move_down,north_east,notifications,notifications_off,palette,payments,pending_actions,person,person_add,person_off,picture_as_pdf,place,rate_review,receipt_long,refresh,reply,restart_alt,savings,search,search_off,send,shuffle,south_west,sync,tune,verified,visibility_off&display=block" rel="stylesheet" onerror="this.onerror=null;this.href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block'">
+<script src="./js/config.js"></script>
+<script>
+/* Percepat muat awal: tema langsung terpasang (tanpa kedipan) + unduhan data dimulai sebelum app.js siap */
+(function(){try{
+var L=localStorage,m=L.getItem('simba.mode')||L.getItem('simba.theme')||'auto',dk=m==='dark'||(m==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
+document.documentElement.setAttribute('data-theme',dk?'dark':'light');
+var c=L.getItem('simba.accentcss');if(c){var st=document.createElement('style');st.id='accentStyle';st.textContent=c;document.head.appendChild(st);}
+var u=(window.SIMBA_CONFIG||{}).GAS_URL;
+if(u&&!/GANTI_/.test(u)){var tk=L.getItem('simba.tok')||sessionStorage.getItem('simba.tok')||null;
+window.__bootKey=tk;
+window.__boot=fetch(u,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'bootstrap',args:[tk]}),redirect:'follow'}).then(function(r){return r.json()});
+window.__boot.catch(function(){});}
+}catch(e){}})();
+</script>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="canvas">
+  <div class="frame">
+    <header class="topbar">
+      <button type="button" class="brand" id="brandBtn" aria-label="SIMBA, ke Beranda">
+        <img class="logo" src="./logo-96.png?v=3" srcset="./logo-96.png?v=3 1x, ./logo-192.png?v=3 2x" width="40" height="40" alt="" decoding="async">
+        <span><b>SIMBA</b><small id="brandRt">RT.06 RW.01 Bangsri</small></span>
+      </button>
+      <div class="search">
+        <span class="mi" aria-hidden="true">search</span>
+        <input id="gq" type="search" placeholder="Cari nama KK, notulensi, atau iuran…" aria-label="Pencarian" autocomplete="off">
+        <div id="gres" role="listbox"></div>
+      </div>
+      <div class="tools">
+        <span id="sync" role="status">Menyimpan…</span>
+        <button type="button" class="iconbtn" id="paletteBtn" aria-label="Atur tampilan dan warna"><span class="mi" aria-hidden="true">palette</span></button>
+        <button type="button" class="iconbtn" id="themeBtn" aria-label="Ganti tema terang atau gelap"><span class="mi" aria-hidden="true">contrast</span></button>
+        <button type="button" class="iconbtn" id="bell" aria-label="Pemberitahuan"><span class="mi" aria-hidden="true">notifications</span></button>
+        <div id="topUser"></div>
+      </div>
+    </header>
+
+    <div class="body">
+      <aside class="sidebar" aria-label="Navigasi utama">
+        <nav class="nav" id="nav"></nav>
+        <div id="agendaCard"></div>
+      </aside>
+      <main class="main" id="main"><div id="view"></div></main>
+      <aside class="side" id="side" aria-label="Ringkasan kas"></aside>
+    </div>
+  </div>
+</div>
+
+<nav class="bottomnav" id="bnav" aria-label="Navigasi bawah"></nav>
+<div id="modalRoot"></div>
+<div id="toastRoot" role="status" aria-live="polite"></div>
+
+<section class="login" id="loginView" aria-label="Masuk">
+  <div class="lwrap">
+    <button type="button" class="iconbtn lclose" id="lclose" aria-label="Tutup" style="z-index:2"><span class="mi" aria-hidden="true">close</span></button>
+    <div class="lcard">
+      <div class="lart">
+        <img class="llogo" src="./logo-96.png?v=3" width="56" height="56" alt="Logo SIMBA"><span class="eyebrow-w" style="align-self:flex-start">Portal Warga</span>
+        <h2>Akses Warga &amp; Pengurus RT.06</h2>
+        <p>Cek iuran, saldo kas, undian, dan notulensi langsung dari genggaman.</p>
+        <ul>
+          <li><span class="mi" aria-hidden="true">verified</span>Laporan kas terbuka dan akuntabel</li>
+          <li><span class="mi" aria-hidden="true">lock</span>Akun dibuat oleh Administrator atau Pengurus RT</li>
+        </ul>
+      </div>
+      <form class="lform" id="loginForm" autocomplete="on">
+        <h1>Masuk ke SIMBA</h1>
+        <p class="sub">Gunakan username dan sandi dari pengurus RT.</p>
+        <div class="field"><label for="lu">Username</label><input id="lu" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required></div>
+        <div class="field"><label for="lp">Kata sandi</label><input id="lp" name="password" type="password" autocomplete="current-password" required></div>
+        <label class="chk"><input type="checkbox" id="lr" checked><span>Ingat saya di perangkat ini</span></label>
+        <div class="lerr" id="lerr" role="alert"></div>
+        <button type="submit" class="btn btn-pri btn-block lg" id="lbtn">Masuk <span class="mi" aria-hidden="true">arrow_forward</span></button>
+        <button type="button" class="linkbtn" id="lupaBtn">Lupa sandi?</button>
+        <div class="lhelp">Belum punya akun? Hubungi pengurus RT. Lupa sandi: gunakan tombol di atas, kode dikirim ke WhatsApp terdaftar atau pengurus akan membantu mereset.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="./js/app.js" defer></script>
+</body>
+</html>
